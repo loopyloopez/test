@@ -1,0 +1,3 @@
+[build]
+  publish = "public"       # Directory containing frontend files (HTML, CSS, JS)
+  functions = "functions"  # Directory containing serverless functions
