@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Comida Loca - Home</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #fafafa;
+            color: #333;
+        }
+
+        /* Scrollable Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #ff5722;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between; /* Space between cart and navigation */
+            align-items: center;
+            overflow-x: auto; /* Enable horizontal scrolling */
+            white-space: nowrap; /* Prevent items from wrapping */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        .header a {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 500;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: inline-block;
+            transition: color 0.3s ease;
+        }
+
+        .header a:hover {
+            color: #ffccbc;
+        }
+
+        /* Cart Icon */
+        .cart {
+            font-size: 1.5rem;
+            color: white;
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .cart span {
+            margin-left: 10px;
+            background-color: #ffffff;
+            color: #ff5722;
+            padding: 5px 10px;
+            border-radius: 50%;
+        }
+
+        /* Main content to be below the header */
+        .content {
+            margin-top: 80px; /* To clear the fixed header */
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ff5722;
+            font-size: 2.5rem;
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #333;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .food-list {
+            margin: 10px 0;
+            padding-left: 20px;
+            font-size: 1.2rem;
+        }
+
+        .food-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 8px 0;
+            font-weight: 400;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 5px;
+        }
+
+        .food-list li:hover {
+            color: #ff5722;
+        }
+
+        .add-btn {
+            background-color: #00bcd4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .add-btn:hover {
+            background-color: #0097a7;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Scrollable Fixed Header for Category Navigation -->
+    <div class="header">
+        <div>
+            <a href="startpage.html">Home</a>
+            <a href="tacos.html">Tacos</a>
+            <a href="burritos.html">Burritos</a>
+            <a href="drinks.html">Drinks</a>
+            <a href="desserts.html">Desserts</a>
+            <a href="#">🌶 Appetizers</a>
+            <a href="#">🍕 Pizza</a>
+            <a href="#">🍝 Pasta</a>
+            <a href="#">🥗 Salads</a>
+            <a href="#">🍔 Burgers</a>
+            <a href="#">🍛 Rice Bowls</a>
+        </div>
+        <!-- Cart Icon -->
+        <div class="cart" onclick="window.location.href='cart.html'">
+            🛒 <span id="cart-count">0</span>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="content">
+        <h1>Welcome</h1>
+
+        <h2>Popular Foods</h2>
+        <ul class="food-list">
+            <li>
+                🌮 Carne Asada Taco 
+                <button class="add-btn" onclick="addToCart('Carne Asada Taco', 5.99)">Add to Order</button>
+            </li>
+            <li>
+                🌯 Chicken Burrito 
+                <button class="add-btn" onclick="addToCart('Chicken Burrito', 7.99)">Add to Order</button>
+            </li>
+            <li>
+                🥤 Horchata 
+                <button class="add-btn" onclick="addToCart('Horchata', 2.99)">Add to Order</button>
+            </li>
+            <li>
+                🍰 Churros 
+                <button class="add-btn" onclick="addToCart('Churros', 3.50)">Add to Order</button>
+            </li>
+        </ul>
+
+        <h2>Try These Specials!</h2>
+        <ul class="food-list">
+            <li>
+                🌮 Vegetarian Taco 
+                <button class="add-btn" onclick="addToCart('Vegetarian Taco', 4.99)">Add to Order</button>
+            </li>
+            <li>
+                🌯 Bean and Cheese Burrito 
+                <button class="add-btn" onclick="addToCart('Bean and Cheese Burrito', 6.99)">Add to Order</button>
+            </li>
+            <li>
+                🍰 Tres Leches Cake 
+                <button class="add-btn" onclick="addToCart('Tres Leches Cake', 4.50)">Add to Order</button>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        // Function to initialize cart and retrieve it from localStorage
+        function initializeCart() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            document.getElementById('cart-count').textContent = cart.length;
+        }
+
+        // Function to add items to the cart and store them in localStorage
+        function addToCart(item, price) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({ name: item, price: price });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            document.getElementById('cart-count').textContent = cart.length; // Update cart count
+            alert(item + ' added to your cart!');
+        }
+
+        // Initialize the cart count when the page loads
+        window.onload = initializeCart;
+    </script>
+
+</body>
+</html>

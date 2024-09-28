@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Now</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffe680; /* Bright yellow background */
+            font-family: 'Comic Sans MS', sans-serif; /* Kid-friendly, fun font */
+        }
+
+        .container {
+            text-align: center;
+            color: #ff5722; /* Fiesta orange for text */
+        }
+
+        .container h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px #f44336; /* Adding a red shadow for fun */
+        }
+
+        .btn {
+            background-color: #00bcd4; /* Bright turquoise button */
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.8rem;
+            border: none;
+            border-radius: 10px; /* Rounded corners for a friendly look */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 3px 3px #ff9800; /* Adding shadow for a playful touch */
+        }
+
+        .btn:hover {
+            background-color: #0097a7; /* Darker turquoise on hover */
+        }
+
+        .decor {
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            width: 200px;
+            height: auto;
+        }
+
+        .decor-right {
+            position: absolute;
+            top: 10%;
+            right: 10%;
+            width: 150px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome!</h1>
+        <button class="btn" onclick="window.location.href='foods.html'">Click here to get started</button>
+    </div>
+
+    <!-- Optional Fun Graphics for Mexican Theme -->
+    <img src="https://example.com/sombrero.png" alt="Sombrero" class="decor">
+    <img src="Screenshot 2024-09-28 133158.png" alt="Taco" class="decor-right">
+
+    <script>
+        // Kiosk mode check (optional)
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen().catch(err => {
+                console.log("Error enabling fullscreen mode: " + err);
+            });
+        }
+    </script>
+</body>
+</html>
